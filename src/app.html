@@ -1,0 +1,37 @@
+<template>
+  <require from="./app.css"></require>
+  <require from="./components/header"></require>
+  <header></header>
+  <div class="d-flex justify-content-center align-items-center container">
+    <div class="row">
+      <div class="text-center">
+        <form class="form-inline my-2 my-lg-0" submit.delegate = "forecast()" _lpchecked="1">
+          <input class="form-control mr-sm-2" type="text" value.bind = "city" placeholder="Search">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add a table to display the forecast -->
+  <div class="d-flex justify-content-center align-items-center container">
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Date and Time</th>
+          <th scope="col">Temperature (K)</th>
+          <th scope="col">Humidity %</th>
+          <th scope="col">Weather (Rain, Snow, Extreme etc.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-dark" repeat.for="item of forcastlist">
+          <th scope="row">${item.dt_txt}</th>
+          <td>${item.main.temp}</td>
+          <td>${item.main.humidity}</td>
+          <td>${item.weather[0].main}</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
+</template>
